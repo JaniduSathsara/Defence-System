@@ -3,13 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package defence.system;
-
 /**
  *
  * @author Janidu
  */
 public class DefenceSystem {
-
     /**
      * @param args the command line arguments
      */
@@ -25,7 +23,5 @@ public class DefenceSystem {
         helicopter.setVisible(true);
         tank.setVisible(true);
         submarine.setVisible(true);
-
     }
-
 }

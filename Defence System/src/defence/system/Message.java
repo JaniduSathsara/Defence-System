@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package defence.system;
-
 /**
  *
  * @author Janidu
  */
+
 public class Message {
    private String sender;
    private String message;
@@ -23,7 +23,6 @@ public class Message {
    
    public String getMessage(){
        return message;
-   }
-   
+   }  
 }
 

@@ -9,7 +9,7 @@ package defence.system;
  * @author Janidu
  */
 public class HelicopterWindow extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HelicopterWindow.class.getName());
 
     /**
@@ -17,6 +17,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
      */
     public HelicopterWindow() {
         initComponents();
+ 
     }
 
     /**
@@ -86,6 +87,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         btnSend.setText("Send");
+        btnSend.addActionListener(this::btnSendActionPerformed);
 
         position.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         position.setText("Position");
@@ -169,6 +171,10 @@ public class HelicopterWindow extends javax.swing.JFrame {
     private void positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_positionActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+       
+    }//GEN-LAST:event_btnSendActionPerformed
 
     /**
      * @param args the command line arguments

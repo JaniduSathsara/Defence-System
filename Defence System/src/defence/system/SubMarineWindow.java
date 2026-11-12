@@ -9,7 +9,7 @@ package defence.system;
  * @author Janidu
  */
 public class SubMarineWindow extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SubMarineWindow.class.getName());
 
     /**
@@ -17,6 +17,7 @@ public class SubMarineWindow extends javax.swing.JFrame {
      */
     public SubMarineWindow() {
         initComponents();
+
     }
 
     /**
@@ -90,6 +91,7 @@ public class SubMarineWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton4.setText("Send");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox1.setText("Position");
@@ -213,6 +215,10 @@ public class SubMarineWindow extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
