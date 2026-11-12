@@ -15,6 +15,17 @@ public class DefenceSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        MainController controller = new MainController();
+
+        HelicopterWindow helicopter = new HelicopterWindow();
+        TankWindow tank = new TankWindow();
+        SubMarineWindow submarine = new SubMarineWindow();
+
+        controller.setVisible(true);
+        helicopter.setVisible(true);
+        tank.setVisible(true);
+        submarine.setVisible(true);
+
     }
-    
+
 }
