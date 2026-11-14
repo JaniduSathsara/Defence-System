@@ -14,10 +14,21 @@ public class DefenceSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        new MainController().setVisible(true);
-        new HelicopterWindow().setVisible(true);
-        new TankWindow().setVisible(true);
-        new SubMarineWindow().setVisible(true);
+        MainController main = new MainController();
+
+        HelicopterWindow helicopter = new HelicopterWindow();
+        TankWindow tank = new TankWindow();
+        SubMarineWindow submarine = new SubMarineWindow();
+
+        ControlCenter controlCenter = new ControlCenter();
+
+        controlCenter.registerWindows(helicopter, tank, submarine);
+
+        main.setControlCenter(controlCenter);
+
+        main.setVisible(true);
+        helicopter.setVisible(true);
+        tank.setVisible(true);
+        submarine.setVisible(true);
     }
 }

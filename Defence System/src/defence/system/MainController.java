@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
  */
 public class MainController extends javax.swing.JFrame {
 
+    private ControlCenter controlCenter;
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainController.class.getName());
 
     /**
@@ -20,6 +22,7 @@ public class MainController extends javax.swing.JFrame {
     public MainController() {
         initComponents();
         MessageCenter.registerMainController(txtMessageArea);
+        controlCenter = new ControlCenter();
 
     }
 
@@ -183,9 +186,19 @@ public class MainController extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setControlCenter(ControlCenter controlCenter) {
+        this.controlCenter = controlCenter;
+    }
+
     private void areaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaClearActionPerformed
 
-        jTextArea3.setText("Area Clear status set to: " + "clear");
+        boolean clear = areaClear.isSelected();
+
+        controlCenter.setAreaClear(clear);
+
+        jTextArea3.append("Area Clear status set to: " + clear + "\n");
+
+
     }//GEN-LAST:event_areaClearActionPerformed
 
     private void SendPrivateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPrivateActionPerformed
@@ -227,6 +240,7 @@ public class MainController extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new MainController().setVisible(true));
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox SendPrivate;

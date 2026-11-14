@@ -36,7 +36,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
         btnShoot = new javax.swing.JButton();
         btnMissile = new javax.swing.JButton();
         btnLaser = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblAreaNotClear = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -66,8 +66,17 @@ public class HelicopterWindow extends javax.swing.JFrame {
 
         btnLaser.setText("Laser Operation");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Area Not Cleared");
+        lblAreaNotClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAreaNotClear.setText("Area Not Cleared");
+        lblAreaNotClear.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblAreaNotClearAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Ammo Count");
@@ -126,7 +135,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
                                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblAreaNotClear)))
                 .addGap(30, 30, 30)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -137,7 +146,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblAreaNotClear)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -183,6 +192,10 @@ public class HelicopterWindow extends javax.swing.JFrame {
         txtMsg.setText("");
     }//GEN-LAST:event_btnSendActionPerformed
 
+    private void lblAreaNotClearAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblAreaNotClearAncestorAdded
+
+    }//GEN-LAST:event_lblAreaNotClearAncestorAdded
+
     public void receiveMsg(String sender, String msg) {
         MessageCenter.sendMessage(sender, msg);
 //        System.out.println("/n");
@@ -221,15 +234,23 @@ public class HelicopterWindow extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JLabel lblAreaNotClear;
     private javax.swing.JCheckBox position;
     private javax.swing.JTextArea txtAllMsg;
     private javax.swing.JTextField txtMsg;
     // End of variables declaration//GEN-END:variables
+
+    void setAreaClear(boolean clear) {
+        if (clear) {
+            lblAreaNotClear.setText("Area Cleared");
+        } else {
+            lblAreaNotClear.setText("Area Not Cleared");
+        }
+    }
 }
