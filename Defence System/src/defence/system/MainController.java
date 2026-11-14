@@ -12,8 +12,6 @@ import javax.swing.JOptionPane;
  */
 public class MainController extends javax.swing.JFrame {
 
-   
-
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainController.class.getName());
 
     /**
@@ -21,7 +19,8 @@ public class MainController extends javax.swing.JFrame {
      */
     public MainController() {
         initComponents();
- 
+        MessageCenter.registerMainController(txtMessageArea);
+
     }
 
     /**
@@ -46,7 +45,7 @@ public class MainController extends javax.swing.JFrame {
         btnSend = new javax.swing.JButton();
         Slider = new javax.swing.JSlider();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtMainControlmsg = new javax.swing.JTextArea();
+        txtMsg = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
 
@@ -90,11 +89,11 @@ public class MainController extends javax.swing.JFrame {
         Slider.setPaintTicks(true);
         Slider.setSnapToTicks(true);
 
-        txtMainControlmsg.setColumns(20);
-        txtMainControlmsg.setLineWrap(true);
-        txtMainControlmsg.setRows(5);
-        txtMainControlmsg.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(txtMainControlmsg);
+        txtMsg.setColumns(20);
+        txtMsg.setLineWrap(true);
+        txtMsg.setRows(5);
+        txtMsg.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txtMsg);
 
         jTextArea3.setColumns(20);
         jTextArea3.setLineWrap(true);
@@ -185,7 +184,8 @@ public class MainController extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void areaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaClearActionPerformed
-        
+
+        jTextArea3.setText("Area Clear status set to: " + "clear");
     }//GEN-LAST:event_areaClearActionPerformed
 
     private void SendPrivateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendPrivateActionPerformed
@@ -193,13 +193,13 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_SendPrivateActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-       String message = txtMainControlmsg.getText();
-       if(message.isEmpty()){
-           JOptionPane.showMessageDialog(null, "Please enter the msg");
-       }else{
-           txtMessageArea.setText("MainController : "+ message);
-           
-       }
+        String msg = txtMsg.getText().trim();
+        if (msg.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a message.");
+            return;
+        }
+        MessageCenter.sendMessage("Main Controller", msg);
+        txtMsg.setText("");
 
     }//GEN-LAST:event_btnSendActionPerformed
 
@@ -243,7 +243,7 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea txtMainControlmsg;
     private javax.swing.JTextArea txtMessageArea;
+    private javax.swing.JTextArea txtMsg;
     // End of variables declaration//GEN-END:variables
 }

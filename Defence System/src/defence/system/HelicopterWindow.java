@@ -17,7 +17,8 @@ public class HelicopterWindow extends javax.swing.JFrame {
      */
     public HelicopterWindow() {
         initComponents();
- 
+        MessageCenter.registerHelicopter(txtAllMsg);
+
     }
 
     /**
@@ -42,8 +43,8 @@ public class HelicopterWindow extends javax.swing.JFrame {
         jSpinner2 = new javax.swing.JSpinner();
         jSlider1 = new javax.swing.JSlider();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        txtAllMsg = new javax.swing.JTextArea();
+        txtMsg = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
         position = new javax.swing.JCheckBox();
 
@@ -82,9 +83,9 @@ public class HelicopterWindow extends javax.swing.JFrame {
         jSlider1.setPaintTicks(true);
         jSlider1.setToolTipText("");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAllMsg.setColumns(20);
+        txtAllMsg.setRows(5);
+        jScrollPane1.setViewportView(txtAllMsg);
 
         btnSend.setText("Send");
         btnSend.addActionListener(this::btnSendActionPerformed);
@@ -103,7 +104,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSend))
                             .addComponent(jScrollPane1)
@@ -159,7 +160,7 @@ public class HelicopterWindow extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSend))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -169,12 +170,23 @@ public class HelicopterWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_positionActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-       
+        String msg = txtMsg.getText().trim();
+        if (msg.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a message.");
+            return;
+        }
+        MessageCenter.sendMessage("Helicopter", msg);
+        txtMsg.setText("");
     }//GEN-LAST:event_btnSendActionPerformed
+
+    public void receiveMsg(String sender, String msg) {
+        MessageCenter.sendMessage(sender, msg);
+//        System.out.println("/n");
+    }
 
     /**
      * @param args the command line arguments
@@ -216,8 +228,8 @@ public class HelicopterWindow extends javax.swing.JFrame {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JCheckBox position;
+    private javax.swing.JTextArea txtAllMsg;
+    private javax.swing.JTextField txtMsg;
     // End of variables declaration//GEN-END:variables
 }
